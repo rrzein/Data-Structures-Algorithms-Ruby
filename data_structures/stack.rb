@@ -37,4 +37,8 @@ class Stack
     true if @size == 0
   end
 
+  def each(&blk)
+
+  end
+
 end
