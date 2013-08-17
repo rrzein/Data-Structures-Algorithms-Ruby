@@ -1,3 +1,5 @@
+require '../data_structures/max_heap'
+
 class Array
 
   def insertion_sort
@@ -80,6 +82,11 @@ class Array
     end
 
     merged_arr + sorted_left + sorted_right
+  end
+
+  def heap_sort
+    heap = Heap.new(self)
+    heap.sort
   end
 
   def quick_sort
