@@ -1,15 +1,27 @@
-#Implementation of a doubly linked list in Ruby
+=begin
+Implementation of a deque in Ruby.
+
+Uses:
+  -Undo-redo operations in software applications.
+  -Checking to see if a string is a palindrome.
+
+=end
 
 class Deque
   attr_accessor :head, :tail
 
   Node = Struct.new(:from, :to, :obj)
 
+  # Initialize the empty deque.
+
   def initialize
     @head = nil
     @tail = nil
     @size = 0
   end
+
+  # Add an object to the end of the deque.
+  # Time complexity: O(1)
 
   def push(obj)
     node = Node.new(nil, nil, obj)
@@ -25,6 +37,9 @@ class Deque
     obj
   end
 
+  # Remove an object from the end of the deque.
+  # Time complexity: O(1)
+
   def pop
     popped = @tail
 
@@ -38,6 +53,9 @@ class Deque
 
     popped.obj
   end
+
+  # Remove an object from the front of the deque.
+  # Time complexity: O(1)
 
   def shift
     shifted = @head
@@ -53,6 +71,9 @@ class Deque
     shifted.obj
   end
 
+  # Add an object to the front of the deque.
+  # Time complexity: O(1)
+
   def unshift(obj)
     node = Node.new(nil, nil, obj)
     if @head
@@ -67,6 +88,9 @@ class Deque
     node.obj
   end
 
+  # Remove all elements from the deque.
+  # Time complexity: O(1)
+
   def empty!
     @head = @tail = nil
     @size = 0
@@ -75,6 +99,9 @@ class Deque
   def empty?
     @size == 0
   end
+
+  # Remove an object from the middle of the deque, starting from the beginning.
+  # Time complexity: O(n)
 
   def remove(obj)
     current_node = @head
@@ -91,6 +118,9 @@ class Deque
     obj
   end
 
+  # Remove an object from the end of the deque, starting from the end.
+  # Time complexity: O(n)
+
   def remove_reverse(obj)
     current_node = @tail
     until current_node.obj == obj
@@ -106,6 +136,9 @@ class Deque
     obj
   end
 
+  # Iterate over the deque from beginning to end and call a block on each object.
+  # Time complexity: O(n) irrespective of block.
+
   def each(&blk)
     return unless @head
     current_node = @head
@@ -114,6 +147,9 @@ class Deque
       current_node = current_node.to
     end
   end
+
+  # Iterate over the deque from end to beginning and call a block on each object.
+  # Time complexity: O(n) irrespective of block.
 
   def each_reverse(&blk)
     return unless @tail
@@ -124,7 +160,10 @@ class Deque
     end
   end
 
-  def reverse
+  # Reverse the order of the deque.
+  # Time complexity: O(n)
+
+  def reverse!
     current_node = @head
     while current_node
       current_node.from, current_node.to = current_node.to, current_node.from
@@ -132,6 +171,9 @@ class Deque
 
     @head, @tail = @tail, @head
   end
+
+  # Find the index of an object in the deque.
+  # Time complexity: O(n)
 
   def index_of(obj)
     current_node = @head
@@ -145,6 +187,9 @@ class Deque
     "Object not found."
   end
 
+  # Return an array representation of the deque.
+  # Time complexity: O(n)
+
   def to_a
     array = []
     current_node = @head
@@ -155,6 +200,9 @@ class Deque
 
     array
   end
+
+  # Return the size of the deque.
+  # Time complexity: O(1)
 
   def size
     @size

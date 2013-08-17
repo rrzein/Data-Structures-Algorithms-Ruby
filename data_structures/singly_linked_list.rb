@@ -54,7 +54,7 @@ class SinglyLinkedList
     push_node = Node.new(push_value)
 
     current_node = @head
-    until current_node.next = nil
+    while current_node.next
       current_node = current_node.next
     end
 
@@ -63,7 +63,7 @@ class SinglyLinkedList
 
   def pop
     current_node = @head
-    until current_node.next.next == nil
+    while current_node.next.next
       current_node = current_node.next
       pop_node = current_node.next
     end
@@ -79,7 +79,7 @@ class SinglyLinkedList
     current_node = @head
     current_copy = head_copy
 
-    until current_node.next == nil
+    while current_node.next
       current_node = current_node.next
       new_copy = current_node.dup
       new_copy.next = current_copy
@@ -92,7 +92,7 @@ class SinglyLinkedList
   def each(&prc)
     current_node = @head
 
-    until current_node.next == nil
+    while current_node.next
       prc.call(current_node)
       current_node = current_node.next
     end
@@ -102,7 +102,7 @@ class SinglyLinkedList
     current_index = 0
 
     current_node = @head
-    until current_node.value = value
+    until current_node.value == value
       current_node = current_node.next
       current_index += 1
     end
