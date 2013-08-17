@@ -1,3 +1,10 @@
+=begin
+Implementation of a Binary Search Tree in Ruby.
+
+Includes depth-first search and breadth-first search.
+
+=end
+
 class BinarySearchTree
   attr_reader :root
 
