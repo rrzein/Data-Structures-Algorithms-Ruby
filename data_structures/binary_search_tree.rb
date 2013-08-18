@@ -31,7 +31,14 @@ class BinarySearchTree
   end
 
   def delete_node(tnode, node)
-
+    if tnode == node
+      tnode = remove(tnode)
+    elsif node < tnode
+      tnode.left = delete_node(tnode.left, node)
+    else
+      tnode.right = delete_node(tnode.right, node)
+    end
+    tnode
   end
 
   def remove(node)
